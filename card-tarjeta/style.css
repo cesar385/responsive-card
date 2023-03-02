@@ -1,0 +1,277 @@
+/*====== DEFINIR VARIABLES ======*/
+:root {
+    /*TONO*/
+    --tono:330;
+    --complemento:190;
+
+    /*Colores*/
+    --color-primario: hsla(var(--tono), 100%, 50%, 1);
+    --color-primario-medio: hsla(var(--tono), 100%, 75%, 1);
+    --color-primario-claro: hsla(var(--tono), 100%, 95%, 1);
+    --color-primario-oscuro: hsla(var(--tono), 100%, 15%, 1);
+    --color-primario-oscuro-medio: hsla(var(--tono), 100%, 25%, 1);
+
+    --color-complemento: hsla(var(--complemento), 100%, 30%, 1),
+}
+
+
+/* MODO CELULAR 0px - 764px de Ancho*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+main.container {
+    
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center; /*Trabaja en el eje Principal (Que por defecto es el Horizobtal) */
+    align-items: center; /* Trabaja en el eje Secundario (que es el vertical) */
+
+    position: relative;
+}
+
+.modal {
+    background-color:var(--color-primario-claro);
+    width: 90%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1rem; /*16px*/
+    overflow: hidden;
+    box-shadow: 0 30px 50px hsla(var(--tono), 100%, 50%, 0.4);
+
+    position: absolute;
+
+    animation: flotar;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes flotar {
+0% {transform: translateY(0px);}
+50% {transform: translateY(-15px);}
+100% {transform: translateY(0px);}
+}
+
+.modal__img {
+    width: 100%;
+    max-height: 250px;
+    margin-bottom: 0.85rem;
+}
+
+.modal__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 530px){
+    .modal__img img {
+        object-position: 0px 0px;
+        width: 100%;
+        max-height: 250px;
+        margin-bottom: 0.85rem
+    }
+}
+
+
+.modal__info {
+    width: 100%;
+    height: 50%;
+}
+
+.modal__txt {
+    padding: 1rem 2rem;
+}
+
+.modal__txt h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.85rem;
+    color: var(--color-primario-oscuro);
+}
+
+.modal__txt p {
+    font-size: 1rem;
+    margin-bottom: 0.85rem;
+    color: var(--color-primario-oscuro-medio);
+}
+
+.modal__btn {
+    display: flex;
+    justify-content: center;
+    color: var(--color-primario);
+}
+
+.modal__btn a {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem 1rem 0 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    width: 60%;
+
+    transition: .2s all ease-in-out;
+
+
+    background: linear-gradient(90deg, hsla(var(--tono), 100%, 50%, 1) 0%, hsla(var(--complemento), 100%, 30%, 1) 100%);
+}
+
+.modal__btn a:hover {
+    background-color: var(--color-primario-oscuro);
+}
+
+.modal__btn i {
+    margin-right: 0.5rem;
+}
+
+
+/* MODO TABLET 764px - 1024px de Ancho*/
+@media screen and (min-width: 764px) {
+
+    .modal {
+        width: 60%;
+        height: 650;
+    }
+}
+
+
+
+
+/* MODO ESCRITORIO - 1024px - 1500px* de ancho*/
+@media screen and (min-width: 1024px) {
+    
+    .modal {
+        width: 60%;
+        flex-direction: row;
+        height: 450px;
+    }
+
+    .modal__img {
+        width: 70%; /*El 70% de su parte que es la mitad (mitad = 100 porque son 2 bloques) */
+        margin:0px;
+        height: 100%;
+        max-height: none;
+        margin: 0;
+    }
+
+    .modal__img img {
+        object-position: 70% 0px;
+    }
+
+    .modal__info {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .modal__txt, .modal__btn{
+        padding: 0px 3rem;
+    }
+
+    .modal__btn {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .modal__btn a {
+        width: 60%;
+        border-radius: 1rem;
+    }
+}
+
+
+
+
+/* MODO ESCRITORIO - 1500px - 1750px* de ancho*/
+
+@media screen and (min-width: 1500px) {
+
+    .modal {
+        width: 55%;
+        height: 500px;
+    }
+
+    .modal__txt, .modal__btn {
+        padding: 0rem 4rem;
+    }
+    
+    .modal__txt h2 {
+        font-size: 2rem;
+    }
+
+    .modal__txt p {
+        font-size: 1.15rem;
+    }
+
+    .modal__btn a{
+        font-size: 1.3rem;
+    }
+
+    .modal__btn i{
+        font-size: 1.5rem;
+    }
+
+    .modal__img {
+        height: 100%;
+    }
+
+    .modal__info {
+        height: 100%;
+    }
+}
+
+
+
+/* MODO ESCRITORIO - 1750px < de ancho*/
+@media screen and (min-width: 1750px) {
+
+    .modal {
+        width: 60%;
+        height: 600px;
+    }
+
+    .modal__txt, .modal__btn {
+        padding: 0rem 5rem;
+    }
+
+    .modal__txt h2 {
+        font-size: 2.3rem;
+    }
+
+    .modal__txt p {
+        font-size: 1.3rem;
+    }
+
+    .modal__btn a {
+        font-size: 1.3rem;
+    }
+
+    .modal__btn i {
+        font-size: 1.5rem;
+    }
+
+    .modal__img {
+        height: 100%;
+    }
+
+    .modal__info {
+        height: 100%;
+    }
+}
